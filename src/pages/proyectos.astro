@@ -1,0 +1,23 @@
+---
+
+import Layout from '../layouts/Layout.astro';
+import proyectos from '../data/proyectos.json';
+---
+<Layout title="Proyectos" description="Lista de proyectos realizados.">
+  <section class="w-screen h-screen bg-cover bg-center flex flex-col items-center justify-center text-white text-center px-4">
+    <h1 class="text-4xl md:text-5xl font-bold drop-shadow-md">Proyectos</h1>
+    <p class="mt-4 text-lg max-w-2xl drop-shadow-md">Lista de proyectos realizados.</p>
+  </section>
+
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+      {proyectos.map((proyectos) => (
+       
+          <a href={`/proyectos/${proyectos.slug}`}>
+            <h2>{proyectos.title}</h2>
+            <p>proyecto descripcion</p>
+          </a>
+        
+      ))}
+    </div>
+  </div>

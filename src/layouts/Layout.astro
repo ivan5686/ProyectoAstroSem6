@@ -1,0 +1,28 @@
+---
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+const { title = "Proyecto Astro" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="font-sans bg-gray-50 text-neutral-900">
+    <Header />
+
+    <main class="min-h-screen">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+
+

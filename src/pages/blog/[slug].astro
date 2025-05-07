@@ -1,0 +1,32 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro"
+const { slug } = Astro.params; // Obtiene el slug de la URL
+
+import { getCollection, getEntry } from "astro:content"; 
+
+const post = await getEntry('posts', slug); // Obtiene la publicación específica según el slug
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts'); // Obtiene la publicación específica según el slug
+  return posts.map((post: { slug: string }) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+---
+
+
+
+
+<Layout>
+  {post && (
+  <h1>{post.data.title}</h1>
+  <p>{post.data.description}</p>
+  <p>{post.data.date}</p>
+  <div set:html={post.body}></div>
+  
+  )}
+  <a href="/" class="button" style="margin-top: 2rem; display: inline-block;">Volver atrás</a>
+</Layout>

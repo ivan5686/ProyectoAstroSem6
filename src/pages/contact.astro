@@ -1,0 +1,40 @@
+---
+
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+
+
+---
+
+
+  <Layout>
+ 
+    <div class="container">
+      
+      <h1 style="margin-bottom: 1rem;">Formulario de contacto</h1>
+
+      <div class="card">
+        <form action="#" method="POST">
+          <label for="name">Nombre
+
+          </label>
+          <input type="text" id="name" name="name" class="input" required/>
+
+
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" class="input" required />
+
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" rows="5" class="input" required></textarea>
+
+          <button type="submit" class="button" style="margin-top: 1rem;">Enviar</button>
+        </form>
+      </div>
+
+      <a href="/" class="button" style="margin-top: 2rem; display: inline-block;">Volver al inicio</a>
+    </div>
+  </Layout>
+    
+
+
+

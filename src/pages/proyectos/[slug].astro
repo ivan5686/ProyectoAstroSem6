@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import proyectos from "../../data/proyectos.json";
+
+
+const { slug } = Astro.params;
+const proyecto = proyectos.find((proyecto) => proyecto.slug === slug);
+
+export async function getStaticPaths() {
+  return proyectos.map((proyecto) => ({
+    params: { slug: proyecto.slug },
+    props: { proyecto },
+  }));
+}
+---
+
+<Layout title={proyecto?.title}>
+  {proyecto && (
+    <section
+      class="w-screen h-screen bg-cover bg-center flex flex-col items-center justify-center text-white text-center px-4"
+    
+    >
+      <h1 class="text-4xl md:text-5xl font-bold drop-shadow-md">{proyecto.title}</h1>
+      <p class="mt-4 text-lg max-w-2xl drop-shadow-md">{proyecto.descripcion}</p>
+    </section>
+  )}
+</Layout>
+
+

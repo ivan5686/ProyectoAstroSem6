@@ -1,0 +1,40 @@
+---
+
+import Layout from '../layouts/Layout.astro';
+import "../styles/global.css";
+import { getCollection } from 'astro:content'; 
+
+const posts = await getCollection('posts'); // Obtiene la colección de publicaciones del blog
+
+---
+
+ <Layout>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi blog</title>
+    <ul>
+        {posts.map((post: any) => (
+            <li>
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </li>
+        
+        ))}
+    </ul>
+    <link rel="stylesheet" href="/css/global.css" />
+  </head>
+  
+
+
+    <div class="container">
+      <h1 style="margin-bottom: 1rem;">Mi blog</h1>
+
+      <div class="card">
+        <p>¡Hola! En esta pagina subiré contenido relacionado con mi blog</p>
+        <p></p>
+        <p></p>
+      </div>
+   
+      <a href="/" class="button" style="margin-top: 2rem; display: inline-block;">Volver al inicio</a>
+    </div>
+  </Layout>
